@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="x-no-scroll">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <style>
+        body {
+            background: #c7b39b url(../static/image/background.jpg); /* Цвет фона и путь к файлу */
+            color: #fff; /* Цвет текста */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/normalize-reset.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="../static/image/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Jq UI -->
+    <link rel="stylesheet" href="../static/css/jquery-ui.css">
+    <title>Site</title>
+</head>
+
+<body class="x-no-scroll">
+    <div class="document">
+        <div class="content-wrapper">
+            <header>
+                <div class="header-top">
+                    <div class="wrapper">
+                        <div class="info">
+                            <div class="city"><i class="fas fa-map-marked-alt"></i>УКРАИНА, КИЕВ</div>
+                            <div class="mail"><i class="fas fa-envelope"></i>E-mail: ww_willy_wonka_shop@gmail.com</div>
+                            <div class="schedule"><i class="far fa-clock"></i>09 00 - 21 00</div>
+                            <div class="tel"><i class="fas fa-phone"></i>+380983912233 </div>
+                        </div>
+                        <div class="search">
+                            <input type="text" name="header-search" placeholder="Поиск">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider">
+                    <div class="header-bg">
+                        <div class="bg-container">
+                            <div class="bg-1"></div>
+                            <div class="bg-2"></div>
+                            <div class="bg-3"></div>
+                            <div class="bg-4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-bottom">
+                    <div class="wrapper">
+                        <div class="logo"></div>
+                        <nav>
+                            <ul class="menu">
+                                <li><a onclick='location.href="/main"'>Главная</a></li>
+                                <li><a onclick='location.href="/auth/products"'>Продукты</a></li>
+                                <li><a onclick='location.href="/contacts"'>Контакты</a></li>
+                                <li><a onclick='location.href="/faq"'>FAQ</a></li>
+                            </ul>
+                        </nav>
+                        <div class="product-action">
+                            <div class="user">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="basket">
+                                <a onclick='location.href="/auth/baskets"'><i class="fas fa-shopping-basket"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pop-up-container">
+                    <form action="/signin" class="userForm" method="post">
+                        <h3>ВХОД</h3>
+                        <input type="email" name="email" placeholder="Введите свой email"><!--LOGIN-->
+                        <input type="text" name="password" placeholder="Введите свой пароль"><!--PASSWORD-->
+                        <button type="submit" name="sign_in">ВОЙТИ</button>
+                        <button type="button" name="sign_up" onClick='location.href="/registration"'>РЕГИСТРАЦИЯ</button>
+                    </form>
+                </div>
+            </header>
+            <main>
+                <div class="wrapper">
+                    <h2>Фабрика развлечений Willy Wonka</h2>
+                    <div class="img-block">
+                        <div class="text-index">
+                            <p1>
+                                Доброго времени суток, вас приветсвует онлайн-сервис по предзаказам продуктов. Никаких очередей, никаких медленых
+                                касиров, "охрана отмена" и опасности заразится в это непростое время.
+                            </p1>
+                        </div>
+                        <img src="../static/image/photo_2019-05-29_14-44-14.jpg" alt="photo" class="center">
+                        <div class="text-index">
+                            <p1>
+                                Благодаря нашему сервису вы получаете возможность заказать любой продукт из любого магазина. Надоело обходить
+                                все супермаркеты в округе в поисках нужного продукта, а потом не найдя искомого возвращатся домой расстроеным?
+                                Просто соберите свою корзину и заберите её у нас.
+                            </p1>
+                        </div>
+                    </div>
+                    <h2>НОВИНКИ</h2>
+
+                    <div class="new-products">
+                        {{range $key, $value:= .}}
+                            <div class="product" id="{{$value.ID}}">
+                                <div class="product-image">
+                                    <img src="../static/image/{{$value.Name}}.jpg">
+                                </div>
+                                <div class="product-name">{{$value.Name}}</div>
+                                <div class="product-description">{{$value.Description}}</div>
+                                <div class="product-price">{{$value.Price}}</div>
+                            </div>
+                        {{end}}
+                    </div>
+
+                    <div class="main-description">
+                        <h3>Выбор продуктов</h3>
+                        <p2>
+                            Женщинам не рекомендуется потреблять менее 1200 ккал энергии в день, мужчинам менее 1500 ккал, поскольку в противном
+                            случае могут возникнуть серьезные проблемы со здоровьем. Суточное потребление энергии в 1200 ккал на самом деле очень
+                            невелико, и к нему можно прибегать только в самых крайних случаях. Лучше выбрать суточное количество энергии 1600–1800
+                            ккал в зависимости от того, насколько ваш вес превышает верхнюю границу нормы, и как быстро вы хотите сбросить вес.
+                        </p2>
+                        <p2>
+                            Мужчинам подходит диета с минимальной энергией в 1800 ккал, поскольку они расходуют больше энергии на основной обмен веществ.
+                            При очень грамотном выборе продуктов можно и 1600 ккал покрыть практически всю дневную норму витаминов и минералов без
+                            необходимости использования БАД.
+                        </p2>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <div class="wrapper">
+                <div class="footer-info">
+                    <div class="footer-about_us">
+                        <h5>О НАС</h5>
+                        <p>
+                            Фабрика Развлечений Willy Wonka - интернет магазин, который предоставляет вам возможность предзаказа продуктов,
+                            просто составь заказ и забери его у нас. Качество обслуживания на высоком уровне. В нашем каталоге, вы сможете найти
+                            продукты со всех супермаркетов города.
+                        </p>
+                    </div>
+                    <div class="footer-contacts">
+                        <h5>НАШИ КОНТАКТЫ</h5>
+                        <p>Адрес: г. Киев</p>
+                        <p>Телефоны: +380983912233 +380968875470</p>
+                        <p>E-mail: ww_willy_wonka_shop@gmail.com</p>
+                    </div>
+                    <div class="footer-schedule">
+                        <h5>ГРАФИК РАБОТЫ</h5>
+                        <p>Понедельник - Пятница - 08:00 - 23:00;</p>
+                            <p>Суббота - 00:00 - 00:00;</p>
+                            <p>Воскресенье - 00:00 - 23:00.</p>
+                    </div>
+                    <div class="footer-social_media">
+                        <h5>СОЦИАЛЬНЫЕ СЕТИ</h5>
+                        <h5>канули в прошлое</h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/jquery-ui.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>
+
+</html>

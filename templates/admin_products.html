@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="x-no-scroll">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <style>
+        body {
+            background: #c7b39b url(../static/image/background.jpg); /* Цвет фона и путь к файлу */
+            color: #fff; /* Цвет текста */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/normalize-reset.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="../static/image/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Jq UI -->
+    <link rel="stylesheet" href="../static/css/jquery-ui.css">
+    <title>Site</title>
+</head>
+
+<body class="x-no-scroll">
+<div class="document">
+    <div class="content-wrapper">
+        <header>
+            <div class="header-top">
+                <div class="wrapper">
+                    <div class="info">
+                        <div class="city"><i class="fas fa-map-marked-alt"></i>УКРАИНА, КИЕВ</div>
+                        <div class="mail"><i class="fas fa-envelope"></i>E-mail: ww_willy_wonka_shop@gmail.com</div>
+                        <div class="schedule"><i class="far fa-clock"></i>09 00 - 21 00</div>
+                        <div class="tel"><i class="fas fa-phone"></i>+380983912233 </div>
+                    </div>
+                    <div class="search">
+                        <input type="text" name="header-search" placeholder="Поиск">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="slider">
+                <div class="header-bg">
+                    <div class="bg-container">
+                        <div class="bg-1"></div>
+                        <div class="bg-2"></div>
+                        <div class="bg-3"></div>
+                        <div class="bg-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="wrapper">
+                    <div class="logo"></div>
+                    <nav>
+                        <ul class="menu">
+                            <li><a onclick='location.href="/main"'>Главная</a></li>
+                            <li><a onclick='location.href="/admin"'>Продукты</a></li>
+                            <li><a onclick='location.href="/contacts"'>Контакты</a></li>
+                            <li><a onclick='location.href="/faq"'>FAQ</a></li>
+                        </ul>
+                    </nav>
+                    <div class="product-action">
+                        <div class="productItem">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-up-container">
+                <form action="/signin" class="userForm" method="post">
+                    <h3>ВХОД</h3>
+                    <input type="email" name="email" placeholder="Введите свой email">
+                    <input type="text" name="password" placeholder="Введите свой пароль">
+                    <button type="button" name="sign_in">ВОЙТИ</button>
+                    <button type="button" name="sign_up" onClick='location.href="reg_page.html"'>РЕГИСТРАЦИЯ</button>
+                </form>
+            </div>
+            <div class="pop-up-container-add-product-2">
+                <form action="/admin/add_product" class="productAddForm" method="post">
+                    <h3>Добавить товар</h3>
+                    <input type="text" name="name" placeholder="Введите название товара">
+                    <input type="number" name="price" placeholder="Введите цену товара">
+                    <input type="text" name="description" placeholder="Введите описание товара">
+                    <input type="text" name="category" placeholder="Введите категорию товара">
+                    <button class="product-add">Добавить товар</button>
+                </form>
+            </div>
+            {{range $key , $value:=.}}
+            <div class="pop-up-container-change-product" id="{{$value.ID}}">
+                <form action="/admin/change_product/{{$value.ID}}" id="{{$value.ID}}" class="productChangeForm" method="POST">
+                    <h3>Редактировать товар</h3>
+                    <input type="text" name="name" value="{{$value.Name}}">
+                    <input type="number" name="price" value="{{$value.Price}}">
+                    <input type="text" name="description" value="{{$value.Description}}">
+                    <input type="text" name="category" value="{{$value.Category}}">
+                    <button class="product-change-submit">Сохранить изменения</button>
+                </form>
+            </div>
+            {{end}}
+        </header>
+        <main>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <div class="sidebar-menu">
+                        <nav>
+                            <h3 style="text-align: left">СОРТИРОВАТЬ</h3>
+                            <ul class="side-bar-menu">
+                                <li>
+                                    По категориям
+                                    <ul class="sub-menu">
+                                        <li>
+                                            {{range $key, $value:= .}}
+                                                <button class="admin-sort-button-category" value="{{$value.Category}}">{{$value.Category}}</button>
+                                            {{end}}
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    По цене
+                                    <ul class="sub-menu">
+                                        <li><button class="admin-sort-button-price" value="false">От дорогих к дешевым</button></li>
+                                        <li><button class="admin-sort-button-price" value="true">От дешевых к дорогим</button></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="products-block">
+                        {{range $key, $value := .}}
+                        <div class="product" id="{{$value.ID}}">
+                            <div class="product-image">
+                                <img src="../static/image/{{$value.Name}}.jpg">
+                            </div>
+                            <div class="product-name">{{$value.Name}}</div>
+                            <div class="product-price">{{$value.Price}} UAH</div>
+                            <div class="product-description">{{$value.Description}}</div>
+                            <div class="product-category">{{$value.Category}}</div>
+                            <button data-id="{{$value.ID}}" class="product-change">ИЗМЕНИТЬ</button>
+                            <button class="product-delete">УДАЛИТЬ</button>
+                        </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="wrapper">
+            <div class="footer-info">
+                <div class="footer-about_us">
+                    <h5>О НАС</h5>
+                    <p>
+                        Фабрика Развлечений Willy Wonka - интернет магазин, который предоставляет вам возможность предзаказа продуктов,
+                        просто составь заказ и забери его у нас. Качество обслуживания на высоком уровне. В нашем каталоге, вы сможете найти
+                        продукты со всех супермаркетов города.
+                    </p>
+                </div>
+                <div class="footer-contacts">
+                    <h5>НАШИ КОНТАКТЫ</h5>
+                    <p>Адрес: г. Киев</p>
+                    <p>Телефоны: +380983912233 +380968875470</p>
+                    <p>E-mail: ww_willy_wonka_shop@gmail.com</p>
+                </div>
+                <div class="footer-schedule">
+                    <h5>ГРАФИК РАБОТЫ</h5>
+                    <p>Понедельник - Пятница - 08:00 - 23:00;</p>
+                    <p>Суббота - 00:00 - 00:00;</p>
+                    <p>Воскресенье - 00:00 - 23:00.</p>
+                </div>
+                <div class="footer-social_media">
+                    <h5>СОЦИАЛЬНЫЕ СЕТИ</h5>
+                    <h5>канули в прошлое</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/jquery-ui.js"></script>
+<script src="../static/js/main.js"></script>
+</body>
+
+</html>

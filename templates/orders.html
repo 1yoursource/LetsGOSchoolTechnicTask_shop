@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="x-no-scroll">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <style>
+        body {
+            background: #c7b39b url(../static/image/background.jpg); /* Цвет фона и путь к файлу */
+            color: #fff; /* Цвет текста */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/normalize-reset.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="../static/image/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Jq UI -->
+    <link rel="stylesheet" href="../static/css/jquery-ui.css">
+    <title>Site</title>
+</head>
+
+<body class="x-no-scroll">
+<div class="document">
+    <div class="content-wrapper">
+        <header>
+            <div class="header-top">
+                <div class="wrapper">
+                    <div class="info">
+                        <div class="city"><i class="fas fa-map-marked-alt"></i>УКРАИНА, КИЕВ</div>
+                        <div class="mail"><i class="fas fa-envelope"></i>E-mail: ww_willy_wonka_shop@gmail.com</div>
+                        <div class="schedule"><i class="far fa-clock"></i>09 00 - 21 00</div>
+                        <div class="tel"><i class="fas fa-phone"></i>+380983912233 </div>
+                    </div>
+                    <div class="search">
+                        <input type="text" name="header-search" placeholder="Поиск">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="slider">
+                <div class="header-bg">
+                    <div class="bg-container">
+                        <div class="bg-1"></div>
+                        <div class="bg-2"></div>
+                        <div class="bg-3"></div>
+                        <div class="bg-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="wrapper">
+                    <div class="logo"></div>
+                    <nav>
+                        <ul class="menu">
+                            <li><a onclick='location.href="/main"'>Главная</a></li>
+                            <li><a onclick='location.href="/auth/products"'>Продукты</a></li>
+                            <li><a onclick='location.href="/contacts"'>Контакты</a></li>
+                            <li><a onclick='location.href="/faq"'>FAQ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="wrapper">
+                <div class="sidebar">
+                </div>
+                <!--orders-->
+                <div class="content">
+                    <div class="orders-block">
+                        <div class="order">
+                            <div class="order-id">asdas</div><!--like product-name-->
+                            <div class="order-name">Al Phaker</div><!--like product-name-->
+                            <div class="order-description">des</div><!--like product-desc-->
+                            <div class="order-status">sss</div><!--like product-name-->
+                            <button class="order-delete">УДАЛИТЬ</button>
+
+                            {{/*{{if .Status "New"}}
+                                <button class="order-cancel">ОТМЕНИТЬ</button>
+                            {{end}}*/}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="wrapper">
+            <div class="footer-info">
+                <div class="footer-about_us">
+                    <h5>О НАС</h5>
+                    <p>
+                        Фабрика Развлечений Willy Wonka - интернет магазин, который предоставляет вам возможность предзаказа продуктов,
+                        просто составь заказ и забери его у нас. Качество обслуживания на высоком уровне. В нашем каталоге, вы сможете найти
+                        продукты со всех супермаркетов города.
+                    </p>
+                </div>
+                <div class="footer-contacts">
+                    <h5>НАШИ КОНТАКТЫ</h5>
+                    <p>Адрес: г. Киев</p>
+                    <p>Телефоны: +380983912233 +380968875470</p>
+                    <p>E-mail: ww_willy_wonka_shop@gmail.com</p>
+                </div>
+                <div class="footer-schedule">
+                    <h5>ГРАФИК РАБОТЫ</h5>
+                    <p>Понедельник - Пятница - 08:00 - 23:00;</p>
+                    <p>Суббота - 00:00 - 00:00;</p>
+                    <p>Воскресенье - 00:00 - 23:00.</p>
+                </div>
+                <div class="footer-social_media">
+                    <h5>СОЦИАЛЬНЫЕ СЕТИ</h5>
+                    <h5>канули в прошлое</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/jquery-ui.js"></script>
+<script src="../static/js/main.js"></script>
+</body>
+
+</html>

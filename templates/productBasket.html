@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="x-no-scroll">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/normalize-reset.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="../static/image/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/css/jquery-ui.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <script async src="../static/js/jquery-ui.js"></script>
+    <title>Site</title>
+</head>
+
+<body class="x-no-scroll">
+    <div class="document">
+        <div class="content-wrapper">
+            <header>
+                <div class="header-top">
+                    <div class="wrapper">
+                        <div class="info">
+                            <div class="city"><i class="fas fa-map-marked-alt"></i>УКРАИНА, КИЕВ</div>
+                            <div class="mail"><i class="fas fa-envelope"></i>E-mail: ww_willy_wonka_shop@gmail.com</div>
+                            <div class="schedule"><i class="far fa-clock"></i>09 00 - 21 00</div>
+                            <div class="tel"><i class="fas fa-phone"></i>+380983912233 </div>
+                        </div>
+                        <div class="search">
+                            <input type="text" name="header-search" placeholder="Поиск">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider">
+                    <div class="header-bg">
+                        <div class="bg-container">
+                            <div class="bg-1"></div>
+                            <div class="bg-2"></div>
+                            <div class="bg-3"></div>
+                            <div class="bg-4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-bottom">
+                    <div class="wrapper">
+                        <div class="logo"></div>
+                        <nav>
+                            <ul class="menu">
+                                <li><a onclick='location.href="/main"'>Главная</a></li>
+                                <li><a onclick='location.href="/auth/products"'>Продукты</a></li>
+                                <li><a onclick='location.href="/contacts"'>Контакты</a></li>
+                                <li><a onclick='location.href="/faq"'>FAQ</a></li>
+                            </ul>
+                        </nav>
+                        <div class="product-action">
+                            <div class="basket">
+                                <a onclick='location.href="/auth/baskets"'><i class="fas fa-shopping-basket"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <!-- {content} -->
+                <div class="wrapper">
+                    <h2>Информация о заказе</h2>
+                </div>
+                <div id="content">
+                    <div style="width:auto; display:inline-block;" id="mainblock">
+                        {{range $key, $value:=.}}
+                        <div class="CartItem" id="{{$value.Products.ID}}">
+                            <img class="OnCartFoto" src="../static/image/{{$value.Products.Name}}.jpg" />
+                            <div class="CenterBlock">
+                                <div class="ItemNameCart">{{$value.Products.Name}}</div>
+                                <!--
+                                <div class="Amount">
+                                    <button class="plusMin" onclick="Minus(@item.Id)">-</button>
+                                    <div id="@item.Id" class="TextQuant">1</div>
+                                    <button class="plusMin" onclick="Plus(@item.Id,@item.Count)">+</button>
+                                </div>
+                                -->
+                            </div>
+                            <div class="deleteProductFromBasket" id="{{$value.ID}}">Удалить</div>
+                        </div>
+                        {{end}}
+                        <div id="Sum">Сума замовлення: 120 грн</div>
+                        <div id="OrderBlock">
+                            <input class="order" type="submit" class="button" value="Оформити замовлення" onclick="toorder()" />
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <div class="wrapper">
+                <div class="footer-info">
+                    <div class="footer-about_us">
+                        <h5>О НАС</h5>
+                        <p>
+                            Фабрика Развлечений Willy Wonka - интернет магазин, который предоставляет вам возможность предзаказа продуктов,
+                            просто составь заказ и забери его у нас. Качество обслуживания на высоком уровне. В нашем каталоге, вы сможете найти
+                            продукты со всех супермаркетов города.
+                        </p>
+                    </div>
+                    <div class="footer-contacts">
+                        <h5>НАШИ КОНТАКТЫ</h5>
+                        <p>Адрес: г. Киев</p>
+                        <p>Телефоны: +380983912233 +380968875470</p>
+                        <p>E-mail: ww_willy_wonka_shop@gmail.com</p>
+                    </div>
+                    <div class="footer-schedule">
+                        <h5>ГРАФИК РАБОТЫ</h5>
+                        <p>Понедельник - Пятница - 08:00 - 23:00;</p>
+                        <p>Суббота - 00:00 - 00:00;</p>
+                        <p>Воскресенье - 00:00 - 23:00.</p>
+                    </div>
+                    <div class="footer-social_media">
+                        <h5>СОЦИАЛЬНЫЕ СЕТИ</h5>
+                        <h5>канули в прошлое</h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>
+
+</html>
+<script type="text/javascript">
+function Delete(id) {
+    var Data = getCartData();
+    var DataNew = []
+    var iterator = 0;
+    for (var Item in Data) {
+        if (Data[Item][0] != id) {
+            DataNew[Item - iterator] = Data[Item];
+        } else {
+            iterator++;
+        }
+    }
+    setCartData(DataNew);
+    var url = '/home/cart?ids=' + DataNew;
+    window.location.replace(url);
+}
+
+function Minus(id) {
+    var Data = getCartData();
+    for (var Item in Data) {
+        if (Data[Item][0] == id) {
+            if (Data[Item][1] > 0) {
+                Data[Item][1]--;
+            }
+        }
+    }
+    setCartData(Data);
+    GetSUm();
+    GetCol();
+}
+
+function Plus(id, count) {
+    var Data = getCartData();
+    for (var Item in Data) {
+        if (Data[Item][0] == id) {
+            if (Data[Item][1] <= count) {
+                Data[Item][1]++;
+            }
+        }
+    }
+    setCartData(Data);
+    GetSUm();
+    GetCol();
+}
+var sum = 0;
+
+function GetSUm() {
+    var Data = getCartData();
+    sum = 0;
+    for (var Item in Data) {
+        var plus = 0;
+        plus = Data[Item][1] * Data[Item][2];
+        sum = sum + plus;
+    }
+    document.getElementById('Sum').innerHTML = 'Сума замовлення: ' + sum + ' грн.';
+}
+</script>
+<script type="text/javascript">
+function setCartData(o) {
+    localStorage.setItem('сart', JSON.stringify(o));
+    return false;
+}
+
+function getCartData() {
+    return JSON.parse(localStorage.getItem('сart'));
+}
+
+function GetCol() {
+    var Data = getCartData();
+
+    for (var Item in Data) {
+
+        document.getElementById(Data[Item][0]).innerHTML = Data[Item][1];
+    }
+}
+GetCol();
+GetSUm();
+</script>
+<script type="text/javascript">
+function toorder() {
+    $.get(
+        "/api/Account/UserId", {
+
+        },
+        onAjaxSuccess
+    );
+}
+
+function onAjaxSuccess(data) {
+    var u = "В обробці";
+
+    var dataaa = {
+        User: data,
+        OrderedItems: (getCartData()).toString(),
+        Address: $('#addressorder').val(),
+        Status: u,
+        DateTime: new Date()
+    };
+    $.ajax({
+        type: 'POST',
+        url: '/api/Order',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataaa),
+        success: function(dataaa) {
+            ClearCartCache();
+            window.location.replace('/home/done');
+        },
+        error: function(dataaa) {
+
+        }
+    });
+
+}
+
+function ClearCartCache() {
+    localStorage.clear();
+}
+</script>
+<script type="text/javascript">
+function reg() {
+
+
+    var data = {
+        Email: $('#emailreg').val(),
+        Password: $('#passreg').val(),
+        ConfirmPassword: $('#passreg').val(),
+        Name: $('#namereg').val(),
+        Surname: $('#surreg').val(),
+        PhoneNumber: $('#telreg').val()
+    };
+    alert(JSON.stringify(data).toString());
+    $.ajax({
+        type: 'POST',
+        url: '/api/Account/Register',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
+        success: function(data) {
+            alert("Регистрация пройдена");
+            window.location.replace("#closed");
+            window.location.reload();
+        },
+        error: function(data) {
+            alert("В процесе регистрации возникла ошибка");
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+function Login() {
+    //...........................
+
+    var loginData = {
+        grant_type: 'password',
+        username: $('#emailLogin').val(),
+        password: $('#passwordLogin').val()
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/Token',
+        data: loginData,
+        success: function(data) {
+            // сохраняем в хранилище sessionStorage токен доступа
+            sessionStorage.setItem('tokenKey', data.access_token);
+            sessionStorage.setItem('username', data.userName);
+            console.log(data.access_token);
+            window.location.replace("#closed");
+            window.location.reload();
+        },
+        error: function(data) {
+            alert('При логине возникла ошибка');
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+function logout() {
+    sessionStorage.removeItem('tokenKey');
+    window.location.reload();
+}
+</script>
+<script type="text/javascript">
+$(window).on('load', function() {
+    var Token = sessionStorage.getItem('tokenKey');
+    var Email = sessionStorage.getItem('username');
+    if (Token != null) {
+        $('#auth2').css('display', 'block');
+        $('#auth1').css('display', 'none');
+        $('.userName').text(Email);
+    } else {}
+});
+</script>
